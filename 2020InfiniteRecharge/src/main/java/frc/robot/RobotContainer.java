@@ -51,18 +51,20 @@ public class RobotContainer {
   }
 
   public static double getYLeft(){
-    if(Math.abs(xbox.getY(Hand.kLeft)) <= 0.1){
+    double kleft = xbox.getY(Hand.kLeft);
+    if(Math.abs(kleft) <= 0.1){
       return 0;
     } else {
-      return xbox.getY(Hand.kLeft)*Math.abs(xbox.getY(Hand.kLeft)); //Math.abs to preserve sign
+      return kleft*Math.abs(kleft); //Math.abs to preserve sign
     }
   }
 
   public static double getYRight(){
-    if(Math.abs(xbox.getY(Hand.kRight)) <= 0.1){
+    double kright = xbox.getY(Hand.kRight);
+    if(Math.abs(kright) <= 0.1){
       return 0;
     } else {
-      return xbox.getY(Hand.kRight)*Math.abs(xbox.getY(Hand.kRight)); //Math.abs to preserve sign
+      return kright*Math.abs(kright); //Math.abs to preserve sign
     }
   }
 
