@@ -21,4 +21,6 @@ public final class Constants {
     public static double distpertick = wheelCircumference/ticksPerRot;
     public static double talonTicksPerRot = ticksPerRot*4;
     public static double talonTickMultiplier = 4;
+
+    public static double shooterAngle = 60;
 }

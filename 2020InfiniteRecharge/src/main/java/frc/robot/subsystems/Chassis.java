@@ -11,8 +11,10 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Chassis extends SubsystemBase {
   /**
@@ -25,12 +27,15 @@ public class Chassis extends SubsystemBase {
   TalonSRX rb;
   SpeedControllerGroup left;
   SpeedControllerGroup right;
+  ADXRS450_Gyro gyro;
+  public int timeoutMs = 100;
 
   public Chassis() {
     lf = new TalonSRX(0);
     lb = new TalonSRX(1);
     rf = new TalonSRX(2);
     rb = new TalonSRX(3);
+    gyro = new ADXRS450_Gyro();
   }
 
   @Override
@@ -61,6 +66,22 @@ public class Chassis extends SubsystemBase {
 
     lf.set(ControlMode.PercentOutput, 0);
     rf.set(ControlMode.PercentOutput, 0);
+  }
+
+  public void driveStrightDist(double dist){
+    lf.setNeutralMode(NeutralMode.Brake);
+    rf.setNeutralMode(NeutralMode.Brake);
+
+    lb.setNeutralMode(NeutralMode.Brake);
+    rb.setNeutralMode(NeutralMode.Brake);
+
+    lf.set(ControlMode.MotionMagic, (-dist/Constants.wheelCircumference)*(Constants.talonTicksPerRot));
+    rf.set(ControlMode.MotionMagic, (-dist/Constants.wheelCircumference)*(Constants.talonTicksPerRot));
+  }
+
+  public void resetEnc(){
+    lf.setSelectedSensorPosition(0, 0, timeoutMs);
+    rf.setSelectedSensorPosition(0, 0, timeoutMs);
   }
 
 }
