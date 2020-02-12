@@ -21,4 +21,19 @@ public final class Constants {
     public static double distpertick = wheelCircumference/ticksPerRot;
     public static double talonTicksPerRot = ticksPerRot*4;
     public static double talonTickMultiplier = 4;
+<<<<<<< Updated upstream
+=======
+
+    //Speed Controller IDs (DON'T TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING!!!)
+    //Chassis
+    public static final int leftSlave = 3, leftTalon = 2, rightSlave = 1, rightTalon =0;
+
+    public static final int SHOOTER_TALON = 4; //Subject to change
+
+
+    public static double lSpeedCoefficient = 0.5;
+    public static double hSpeedCoefficient = 0.85;
+
+
+>>>>>>> Stashed changes
 }

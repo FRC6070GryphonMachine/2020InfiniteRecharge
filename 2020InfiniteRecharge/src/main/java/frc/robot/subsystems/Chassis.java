@@ -10,27 +10,48 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+<<<<<<< Updated upstream
+=======
+import frc.robot.Constants;
+>>>>>>> Stashed changes
 
 public class Chassis extends SubsystemBase {
   /**
    * Creates a new Chassis.
    */
 
-  TalonSRX lf;
-  TalonSRX lb;
-  TalonSRX rf;
-  TalonSRX rb;
-  SpeedControllerGroup left;
-  SpeedControllerGroup right;
+  TalonSRX right, left;
+  VictorSPX rightSlave, leftSlave;
+  
 
   public Chassis() {
+<<<<<<< Updated upstream
     lf = new TalonSRX(0);
     lb = new TalonSRX(1);
     rf = new TalonSRX(2);
     rb = new TalonSRX(3);
+=======
+    //init speed controllers
+    right = new TalonSRX(Constants.rightTalon);
+    left = new TalonSRX(Constants.leftTalon);
+    rightSlave = new VictorSPX(Constants.rightSlave);
+    leftSlave = new VictorSPX(Constants.leftSlave);
+
+    //set brakemode
+    right.setNeutralMode(NeutralMode.Brake);
+    left.setNeutralMode(NeutralMode.Brake);
+    rightSlave.setNeutralMode(NeutralMode.Brake);
+    leftSlave.setNeutralMode(NeutralMode.Brake);
+
+    //set slaves
+    rightSlave.follow(right);
+    leftSlave.follow(left);
+
+    
+>>>>>>> Stashed changes
   }
 
   @Override
@@ -42,6 +63,7 @@ public class Chassis extends SubsystemBase {
   }
 
   public void tankDrive(double left, double right){
+<<<<<<< Updated upstream
     lf.setNeutralMode(NeutralMode.Coast);
     rf.setNeutralMode(NeutralMode.Coast);
 
@@ -61,6 +83,15 @@ public class Chassis extends SubsystemBase {
 
     lf.set(ControlMode.PercentOutput, 0);
     rf.set(ControlMode.PercentOutput, 0);
+=======
+    this.left.set(ControlMode.PercentOutput, left);
+    this.right.set(ControlMode.PercentOutput, right);
+  }
+
+  public void stop(){
+    left.set(ControlMode.PercentOutput, 0);
+    right.set(ControlMode.PercentOutput, 0);
+>>>>>>> Stashed changes
   }
 
 }

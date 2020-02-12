@@ -10,37 +10,26 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-public class StartDriving extends CommandBase {
+public class ShootBall extends CommandBase {
   /**
-   * Creates a new StartDriving.
+   * Creates a new ShootBall.
    */
-  public StartDriving() {
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.chassis);
+  public ShootBall() {
+    addRequirements(RobotContainer.shooter);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-<<<<<<< Updated upstream
-    RobotContainer.chassis.tankDrive(RobotContainer.getYLeft(), RobotContainer.getYRight());
-=======
-    
 
-    //Slow mode triggered by RT
-    if(RobotContainer.getRightTrigger() > 0.8){ 
-      //Slow mode
-      RobotContainer.chassis.tankDrive(RobotContainer.getYLeft()*Constants.lSpeedCoefficient, RobotContainer.getYRight()*Constants.lSpeedCoefficient);
-    } else { 
-      //Fast mode
-      RobotContainer.chassis.tankDrive(RobotContainer.getYLeft()*Constants.hSpeedCoefficient, RobotContainer.getYRight()*Constants.hSpeedCoefficient);
-    }
->>>>>>> Stashed changes
+    RobotContainer.shooter.shoot(RobotContainer.getStickY());
+
   }
 
   // Called once the command ends or is interrupted.

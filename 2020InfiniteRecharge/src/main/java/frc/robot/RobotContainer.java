@@ -7,12 +7,17 @@
 
 package frc.robot;
 
+import javax.print.attribute.standard.JobHoldUntil;
+
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.ShootBall;
 import frc.robot.commands.StartDriving;
 import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.ShooterProto;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -23,7 +28,11 @@ import frc.robot.subsystems.Chassis;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Chassis chassis;
+  public static ShooterProto shooter;
+
   public static XboxController xbox;
+  public static Joystick stick;
+
   public static StartDriving startDriving;
 
 
@@ -37,6 +46,12 @@ public class RobotContainer {
     startDriving = new StartDriving();
     // Configure the button bindings
     configureButtonBindings();
+<<<<<<< Updated upstream
+=======
+    chassis = new Chassis();
+    shooter = new ShooterProto();
+    shooter.setDefaultCommand(new ShootBall());
+>>>>>>> Stashed changes
   }
 
   /**
@@ -47,7 +62,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     xbox = new XboxController(0);
-    
+    stick = new Joystick(1);
   }
 
   public static double getYLeft(){
@@ -68,6 +83,21 @@ public class RobotContainer {
     }
   }
 
+<<<<<<< Updated upstream
+=======
+  public static double getRightTrigger(){
+    return xbox.getTriggerAxis(Hand.kRight);
+  }
+
+  public static double getStickY(){  //used for ball shooter
+    if(Math.abs(stick.getY()) <= 0.1){
+      return 0;
+    } else {
+      return stick.getY();
+    }
+  }
+
+>>>>>>> Stashed changes
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
