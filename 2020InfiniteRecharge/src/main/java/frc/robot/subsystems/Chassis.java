@@ -47,8 +47,6 @@ public class Chassis extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    leftSlave.follow(left);
-    rightSlave.follow(right);
 
   }
 

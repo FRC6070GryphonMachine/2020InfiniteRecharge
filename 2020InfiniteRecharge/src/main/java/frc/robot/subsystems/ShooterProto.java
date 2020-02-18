@@ -7,10 +7,8 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -18,11 +16,15 @@ public class ShooterProto extends SubsystemBase {
   /**
    * Creates a new ShooterProto.
    */
-  TalonSRX shooterTalon;
+  Spark leftRoller;
+  Spark rightRoller;
   
   public ShooterProto() {
-    shooterTalon = new TalonSRX(Constants.SHOOTER_TALON);
-    shooterTalon.setNeutralMode(NeutralMode.Brake);
+    leftRoller = new Spark(Constants.SHOOTER_LEFT);
+    rightRoller = new Spark(Constants.SHOOTER_RIGHT);
+    rightRoller.setInverted(true);
+    leftRoller.setSafetyEnabled(false);
+    rightRoller.setSafetyEnabled(false);
   }
 
   @Override
@@ -31,6 +33,7 @@ public class ShooterProto extends SubsystemBase {
   }
 
   public void shoot(double val){
-    shooterTalon.set(ControlMode.PercentOutput, val);
+    leftRoller.set(val);
+    rightRoller.set(val);
   }
 }
