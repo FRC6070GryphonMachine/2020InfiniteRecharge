@@ -13,10 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-<<<<<<< Updated upstream
-=======
 import frc.robot.Constants;
->>>>>>> Stashed changes
 
 public class Chassis extends SubsystemBase {
   /**
@@ -28,12 +25,6 @@ public class Chassis extends SubsystemBase {
   
 
   public Chassis() {
-<<<<<<< Updated upstream
-    lf = new TalonSRX(0);
-    lb = new TalonSRX(1);
-    rf = new TalonSRX(2);
-    rb = new TalonSRX(3);
-=======
     //init speed controllers
     right = new TalonSRX(Constants.rightTalon);
     left = new TalonSRX(Constants.leftTalon);
@@ -51,39 +42,17 @@ public class Chassis extends SubsystemBase {
     leftSlave.follow(left);
 
     
->>>>>>> Stashed changes
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    lb.follow(lf);
-    rb.follow(rf);
+    leftSlave.follow(left);
+    rightSlave.follow(right);
 
   }
 
   public void tankDrive(double left, double right){
-<<<<<<< Updated upstream
-    lf.setNeutralMode(NeutralMode.Coast);
-    rf.setNeutralMode(NeutralMode.Coast);
-
-    lb.setNeutralMode(NeutralMode.Coast);
-    rb.setNeutralMode(NeutralMode.Coast);
-
-    lf.set(ControlMode.PercentOutput, left);
-    rf.set(ControlMode.PercentOutput, right);
-  }
-
-  public void stop(){
-    lf.setNeutralMode(NeutralMode.Brake);
-    rf.setNeutralMode(NeutralMode.Brake);
-
-    lb.setNeutralMode(NeutralMode.Brake);
-    rb.setNeutralMode(NeutralMode.Brake);
-
-    lf.set(ControlMode.PercentOutput, 0);
-    rf.set(ControlMode.PercentOutput, 0);
-=======
     this.left.set(ControlMode.PercentOutput, left);
     this.right.set(ControlMode.PercentOutput, right);
   }
@@ -91,7 +60,6 @@ public class Chassis extends SubsystemBase {
   public void stop(){
     left.set(ControlMode.PercentOutput, 0);
     right.set(ControlMode.PercentOutput, 0);
->>>>>>> Stashed changes
   }
 
 }

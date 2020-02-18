@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.ShootBall;
 import frc.robot.commands.StartDriving;
 import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.ShooterProto;
 
 /**
@@ -29,6 +30,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Chassis chassis;
   public static ShooterProto shooter;
+  public static Conveyor conveyor;
 
   public static XboxController xbox;
   public static Joystick stick;
@@ -46,12 +48,10 @@ public class RobotContainer {
     startDriving = new StartDriving();
     // Configure the button bindings
     configureButtonBindings();
-<<<<<<< Updated upstream
-=======
     chassis = new Chassis();
     shooter = new ShooterProto();
+    conveyor = new Conveyor();
     shooter.setDefaultCommand(new ShootBall());
->>>>>>> Stashed changes
   }
 
   /**
@@ -83,10 +83,11 @@ public class RobotContainer {
     }
   }
 
-<<<<<<< Updated upstream
-=======
   public static double getRightTrigger(){
     return xbox.getTriggerAxis(Hand.kRight);
+  }
+  public static double getLeftTrigger(){
+    return xbox.getTriggerAxis(Hand.kLeft);
   }
 
   public static double getStickY(){  //used for ball shooter
@@ -97,7 +98,6 @@ public class RobotContainer {
     }
   }
 
->>>>>>> Stashed changes
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
