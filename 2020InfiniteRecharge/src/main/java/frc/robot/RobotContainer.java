@@ -45,12 +45,11 @@ public class RobotContainer {
    */
   public RobotContainer() {
     chassis = new Chassis();
-    startDriving = new StartDriving();
     // Configure the button bindings
     configureButtonBindings();
-    chassis = new Chassis();
     shooter = new ShooterProto();
     conveyor = new Conveyor();
+    chassis.setDefaultCommand(new StartDriving());
     shooter.setDefaultCommand(new ShootBall());
   }
 
