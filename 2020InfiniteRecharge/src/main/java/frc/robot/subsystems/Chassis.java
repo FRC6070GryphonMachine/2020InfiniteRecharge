@@ -51,7 +51,7 @@ public class Chassis extends SubsystemBase {
   }
 
   public void tankDrive(double left, double right){
-    this.left.set(ControlMode.PercentOutput, left);
+    this.left.set(ControlMode.PercentOutput, left/2);
     this.right.set(ControlMode.PercentOutput, right);
   }
 

@@ -14,12 +14,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.commands.PullBall;
-import frc.robot.commands.ShootBall;
 import frc.robot.commands.StartDriving;
 import frc.robot.subsystems.Chassis;
-import frc.robot.subsystems.Conveyor;
-import frc.robot.subsystems.ShooterProto;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -30,8 +26,6 @@ import frc.robot.subsystems.ShooterProto;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Chassis chassis;
-  public static ShooterProto shooter;
-  public static Conveyor conveyor;
 
   public static XboxController xbox;
   public static Joystick stick;
@@ -48,16 +42,14 @@ public class RobotContainer {
 
     //subsystems
     chassis = new Chassis();
-    shooter = new ShooterProto();
-    conveyor = new Conveyor();
+    
 
     // Configure the button bindings
     configureButtonBindings();
 
     //commands
-    conveyor.setDefaultCommand(new PullBall());
     chassis.setDefaultCommand(new StartDriving());
-    shooter.setDefaultCommand(new ShootBall());
+  
   }
 
   /**
