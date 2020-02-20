@@ -37,13 +37,19 @@ public class Chase_Ball extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    //call intake command
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    //check to see if ball in front of intake or kill button is pressed
+    //check to see if kill button pressed
+      //return true
+      
+    //check if ball in front of intake 
+      //call intake ball command
+      //return true
+
+    //else
     return false;
   }
 }
