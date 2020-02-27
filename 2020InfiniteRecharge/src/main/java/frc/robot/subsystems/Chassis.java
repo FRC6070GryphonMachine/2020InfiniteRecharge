@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -53,11 +54,19 @@ public class Chassis extends SubsystemBase {
   public void tankDrive(double left, double right){
     this.left.set(ControlMode.PercentOutput, left/3);
     this.right.set(ControlMode.PercentOutput, right);
+    
   }
 
   public void stop(){
     left.set(ControlMode.PercentOutput, 0);
     right.set(ControlMode.PercentOutput, 0);
+  }
+
+  public int getleftVelocity(){
+    return this.left.getActiveTrajectoryVelocity();
+  }
+  public int getrightVelocity(){
+    return this.right.getActiveTrajectoryVelocity();
   }
 
 }
