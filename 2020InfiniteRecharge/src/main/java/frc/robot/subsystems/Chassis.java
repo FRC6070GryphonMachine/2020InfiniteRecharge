@@ -40,7 +40,7 @@ public class Chassis extends SubsystemBase {
     //set slaves
     rightSlave.follow(right);
     leftSlave.follow(left);
-
+    
     
   }
 
@@ -51,7 +51,7 @@ public class Chassis extends SubsystemBase {
   }
 
   public void tankDrive(double left, double right){
-    this.left.set(ControlMode.PercentOutput, left/2);
+    this.left.set(ControlMode.PercentOutput, left/3);
     this.right.set(ControlMode.PercentOutput, right);
   }
 
