@@ -7,18 +7,22 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class SparkMaxes extends SubsystemBase {
   /**
    * Creates a new SparkMaxes.
    */
-  public SparkMaxes() {
+  CANSparkMax spark;
 
+  public SparkMaxes() {
+    spark = new CANSparkMax(4);
   }
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    spark.
   }
 }
