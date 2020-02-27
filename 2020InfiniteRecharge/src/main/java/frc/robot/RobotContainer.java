@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.StartDriving;
 import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.SparkMaxes;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -26,6 +27,7 @@ import frc.robot.subsystems.Chassis;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Chassis chassis;
+  public static SparkMaxes maxes;
 
   public static XboxController xbox;
   public static Joystick stick;
@@ -42,6 +44,7 @@ public class RobotContainer {
 
     //subsystems
     chassis = new Chassis();
+    maxes = new SparkMaxes();
     
 
     // Configure the button bindings

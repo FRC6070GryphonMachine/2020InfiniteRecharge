@@ -21,6 +21,7 @@ public class SparkMaxes extends SubsystemBase {
 
   public SparkMaxes() {
     spark = new CANSparkMax(4, MotorType.kBrushless);
+    
   }
 
   @Override
