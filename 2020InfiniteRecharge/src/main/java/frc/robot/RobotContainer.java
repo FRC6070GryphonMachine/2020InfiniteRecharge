@@ -9,6 +9,9 @@ package frc.robot;
 
 import javax.print.attribute.standard.JobHoldUntil;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -38,7 +41,7 @@ public class RobotContainer {
 
   public static StartDriving startDriving;
 
-
+  public static NetworkTableEntry pixyX, pixyY;
 
 
   /**
@@ -58,6 +61,13 @@ public class RobotContainer {
     conveyor.setDefaultCommand(new PullBall());
     chassis.setDefaultCommand(new StartDriving());
     shooter.setDefaultCommand(new ShootBall());
+
+    //network table
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    NetworkTable pixyTable = inst.getTable("pixyTable");
+    pixyX = pixyTable.getEntry("x");
+    pixyY = pixyTable.getEntry("y");
+  
   }
 
   /**
