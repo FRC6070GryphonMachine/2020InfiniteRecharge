@@ -7,8 +7,9 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -16,15 +17,13 @@ public class ShooterProto extends SubsystemBase {
   /**
    * Creates a new ShooterProto.
    */
-  Spark leftRoller;
-  Spark rightRoller;
+  CANSparkMax leftRoller;
+  CANSparkMax rightRoller;
   
   public ShooterProto() {
-    leftRoller = new Spark(Constants.SHOOTER_LEFT);
-    rightRoller = new Spark(Constants.SHOOTER_RIGHT);
+    leftRoller = new CANSparkMax(Constants.SHOOTER_LEFT, MotorType.kBrushless);
+    rightRoller = new CANSparkMax(Constants.SHOOTER_RIGHT, MotorType.kBrushless);
     rightRoller.setInverted(true);
-    leftRoller.setSafetyEnabled(false);
-    rightRoller.setSafetyEnabled(false);
   }
 
   @Override
