@@ -7,18 +7,22 @@
 
 package frc.robot;
 
-import javax.print.attribute.standard.JobHoldUntil;
+//idk what this is
+/*import javax.print.attribute.standard.JobHoldUntil;*/
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.IntakeBall;
 import frc.robot.commands.PullBall;
 import frc.robot.commands.ShootBall;
 import frc.robot.commands.StartDriving;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.Conveyor;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.ShooterProto;
 
 /**
@@ -31,10 +35,15 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Chassis chassis;
   public static ShooterProto shooter;
+  public static Intake intake;
   public static Conveyor conveyor;
 
   public static XboxController xbox;
   public static Joystick stick;
+  public static JoystickButton intakeButton;
+  public static JoystickButton ejectButton;
+  public static JoystickButton conveyorButton;
+  public static JoystickButton shooterButton;
 
   public static StartDriving startDriving;
 
@@ -49,6 +58,7 @@ public class RobotContainer {
     //subsystems
     chassis = new Chassis();
     shooter = new ShooterProto();
+    intake = new Intake();
     conveyor = new Conveyor();
 
     // Configure the button bindings
@@ -58,6 +68,7 @@ public class RobotContainer {
     conveyor.setDefaultCommand(new PullBall());
     chassis.setDefaultCommand(new StartDriving());
     shooter.setDefaultCommand(new ShootBall());
+    intake.setDefaultCommand(new IntakeBall());
   }
 
   /**
@@ -69,6 +80,10 @@ public class RobotContainer {
   private void configureButtonBindings() {
     xbox = new XboxController(0);
     stick = new Joystick(1);
+    intakeButton = new JoystickButton(stick, 0);
+    ejectButton = new JoystickButton(stick, 1);
+    conveyorButton = new JoystickButton(stick, 2);
+    shooterButton = new JoystickButton(stick, 3);
   }
 
   public static double getYLeft(){
@@ -102,6 +117,22 @@ public class RobotContainer {
     } else {
       return stick.getY();
     }
+  }
+
+  public static boolean getIntakeButton(){
+    return intakeButton.get();
+  }
+
+  public static boolean getEjectButton(){
+    return ejectButton.get();
+  }
+
+  public static boolean getConveyorButton(){
+    return conveyorButton.get();
+  }
+
+  public static boolean getShooterButton(){
+    return shooterButton.get();
   }
 
 
