@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
 public class StartDriving extends CommandBase {
@@ -28,7 +29,12 @@ public class StartDriving extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.chassis.tankDrive(RobotContainer.getYLeft(), RobotContainer.getYRight());
+    if(RobotContainer.getRightTrigger() > 0.8){
+      RobotContainer.chassis.tankDrive(RobotContainer.getYLeft()*Constants.lSpeedCoefficient, RobotContainer.getYRight()*Constants.lSpeedCoefficient);
+    } else {
+      RobotContainer.chassis.tankDrive(RobotContainer.getYLeft()*Constants.hSpeedCoefficient, RobotContainer.getYRight()*Constants.hSpeedCoefficient);
+    }
+    
   }
 
   // Called once the command ends or is interrupted.
