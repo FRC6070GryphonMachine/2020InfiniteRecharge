@@ -68,7 +68,7 @@ public class RobotContainer {
     if(Math.abs(kleft) <= 0.1){
       return 0;
     } else {
-      return kleft*Math.abs(kleft); //Math.abs to preserve sign
+      return kleft; //Math.abs to preserve sign
     }
   }
 
@@ -77,7 +77,7 @@ public class RobotContainer {
     if(Math.abs(kright) <= 0.1){
       return 0;
     } else {
-      return kright*Math.abs(kright); //Math.abs to preserve sign
+      return kright; //Math.abs to preserve sign
     }
   }
 
