@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -22,7 +23,14 @@ public class Chassis extends SubsystemBase {
 
   TalonSRX right, left;
   VictorSPX rightSlave, leftSlave;
+
+  ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+  double kiG;
+  double kpG;
+  double kdG;
+
   
+
 
   public Chassis() {
     //init speed controllers
@@ -66,6 +74,13 @@ public class Chassis extends SubsystemBase {
   }
   public int getrightVelocity(){
     return this.right.getActiveTrajectoryVelocity();
+  }
+
+  public void resetGyro(){
+    gyro.reset();
+  }
+  public double getGyro(){
+    return gyro.getAngle()%360;
   }
 
 }
