@@ -26,10 +26,11 @@ public final class Constants {
     //Chassis
     public static final int leftSlave = 3, leftTalon = 2, rightSlave = 1, rightTalon =0;
 
-    public static final int INTAKE_TALON = 4;
-    public static final int CONVEYOR_TALON = 5;
-    public static final int SHOOTER_LEFT = 6;
-    public static final int SHOOTER_RIGHT = 7;
+    public static final int INTAKE_SPARK = 4;
+    public static final int INTAKE_TALON = 5;
+    public static final int CONVEYOR_TALON = 6;
+    public static final int SHOOTER_LEFT = 7;
+    public static final int SHOOTER_RIGHT = 8;
 
 
     public static double lSpeedCoefficient = 0.5;

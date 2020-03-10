@@ -10,20 +10,22 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class ShooterProto extends SubsystemBase {
+public class IntakeArm extends SubsystemBase {
   /**
-   * Creates a new ShooterProto.
+   * Creates a new IntakeArm.
    */
-  CANSparkMax leftRoller;
-  CANSparkMax rightRoller;
-  
-  public ShooterProto() {
-    leftRoller = new CANSparkMax(Constants.SHOOTER_LEFT, MotorType.kBrushed);
-    rightRoller = new CANSparkMax(Constants.SHOOTER_RIGHT, MotorType.kBrushed);
-    rightRoller.setInverted(true);
+  CANSparkMax intakeArm;
+  DigitalInput stopSwitch;
+  Counter counter;
+  public IntakeArm() {
+    intakeArm = new CANSparkMax(Constants.INTAKE_SPARK, MotorType.kBrushed);
+    stopSwitch = new DigitalInput(1);
+    counter = new Counter(stopSwitch);
   }
 
   @Override
@@ -31,8 +33,23 @@ public class ShooterProto extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void shoot(double val){
-    leftRoller.set(val);
-    rightRoller.set(val);
+  public void drop(){
+    intakeArm.set(1);
+  }
+
+  public void stop(){
+    intakeArm.stopMotor();
+  }
+
+  public void lift(){
+    intakeArm.set(-0.1);
+  }
+
+  public boolean isSwitchSet(){
+    return (counter.get() > 0);
+  }
+
+  public void startCounter(){
+    counter.reset();
   }
 }

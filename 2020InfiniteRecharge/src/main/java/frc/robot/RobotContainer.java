@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.DropIntake;
 import frc.robot.commands.IntakeBall;
 import frc.robot.commands.PullBall;
 import frc.robot.commands.ShootBall;
@@ -23,6 +24,7 @@ import frc.robot.commands.StartDriving;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.Conveyor;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakeArm;
 import frc.robot.subsystems.ShooterProto;
 
 /**
@@ -35,6 +37,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static Chassis chassis;
   public static ShooterProto shooter;
+  public static IntakeArm arm;
   public static Intake intake;
   public static Conveyor conveyor;
 
@@ -44,6 +47,7 @@ public class RobotContainer {
   public static JoystickButton ejectButton;
   public static JoystickButton conveyorButton;
   public static JoystickButton shooterButton;
+  public static JoystickButton armButton;
 
   public static StartDriving startDriving;
 
@@ -58,6 +62,7 @@ public class RobotContainer {
     //subsystems
     chassis = new Chassis();
     shooter = new ShooterProto();
+    arm = new IntakeArm();
     intake = new Intake();
     conveyor = new Conveyor();
 
@@ -69,6 +74,7 @@ public class RobotContainer {
     chassis.setDefaultCommand(new StartDriving());
     shooter.setDefaultCommand(new ShootBall());
     intake.setDefaultCommand(new IntakeBall());
+    arm.setDefaultCommand(new DropIntake());
   }
 
   /**
@@ -84,6 +90,7 @@ public class RobotContainer {
     ejectButton = new JoystickButton(stick, 1);
     conveyorButton = new JoystickButton(stick, 2);
     shooterButton = new JoystickButton(stick, 3);
+    armButton = new JoystickButton(stick, 4);
   }
 
   public static double getYLeft(){
@@ -133,6 +140,10 @@ public class RobotContainer {
 
   public static boolean getShooterButton(){
     return shooterButton.get();
+  }
+
+  public static boolean getArmButton(){
+    return armButton.get();
   }
 
 
