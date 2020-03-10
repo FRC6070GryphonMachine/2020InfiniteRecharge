@@ -37,9 +37,9 @@ public class AutoTurn extends CommandBase {
     RobotContainer.chassis.resetGyro();
     controller.setTolerance(tolerance);
     controller.enableContinuousInput(0, 360);
-    SmartDashboard.putNumber("p", kp);
-    SmartDashboard.putNumber("i", ki);
-    SmartDashboard.putNumber("d", kd);
+    SmartDashboard.putNumber("GyroP", kp);
+    SmartDashboard.putNumber("GyroI", ki);
+    SmartDashboard.putNumber("GyroD", kd);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -54,9 +54,9 @@ public class AutoTurn extends CommandBase {
   }
 
   public void updateValues(){
-    double p = SmartDashboard.getNumber("p", 0);
-    double i = SmartDashboard.getNumber("i", 0);
-    double d = SmartDashboard.getNumber("d", 0);
+    double p = SmartDashboard.getNumber("GyroP", 0);
+    double i = SmartDashboard.getNumber("GyroI", 0);
+    double d = SmartDashboard.getNumber("GyroD", 0);
     controller.setPID(p, i, d);
   }
 
