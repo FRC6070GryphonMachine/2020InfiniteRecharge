@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.StartDriving;
-import frc.robot.commands.TurnToAngle;
+import frc.robot.commands.AutoTurn;
 import frc.robot.subsystems.Chassis;
 
 /**
@@ -104,7 +104,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    return new TurnToAngle(90);
+    return new AutoTurn(90);
   }
     // An ExampleCommand will run in autonomous
     
