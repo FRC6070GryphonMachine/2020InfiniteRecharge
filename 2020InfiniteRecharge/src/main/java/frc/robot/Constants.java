@@ -25,8 +25,8 @@ public final class Constants {
     //Speed Controller IDs (DON'T TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING!!!)
     //Chassis
     public static final int leftSlave = 3, leftTalon = 2, rightSlave = 1, rightTalon =0;
-
-    public static double kpGyro = 0.01, kiGyro =0, kdGyro=0;
+    //0,6
+    public static double kpGyro = 0.24, kiGyro =0.144, kdGyro=0.03375;
 
     public static final int CONVEYOR_TALON = 5;
     public static final int SHOOTER_LEFT = 6;

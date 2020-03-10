@@ -7,6 +7,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.Constants;
@@ -20,6 +21,7 @@ public class TurnToAngle extends PIDCommand {
    * Creates a new TurnToAngle.
    */
   public TurnToAngle(double targetAngle) {
+
     super(
         // The controller that the command will use
         new PIDController(Constants.kpGyro, Constants.kiGyro, Constants.kdGyro),
@@ -29,18 +31,22 @@ public class TurnToAngle extends PIDCommand {
         targetAngle,
         // This uses the output
         output -> {
-          RobotContainer.chassis.tankDrive(output, -1*output);
+          RobotContainer.chassis.tankDrive(output/120, -1*output/120);
+          //DriverStation.reportError(Double.toString(RobotContainer.chassis.getGyro()), false);
         },
         RobotContainer.chassis);
     // Use addRequirements() here to declare subsystem dependencies.
     // Configure additional PID options by calling `getController` here.
-      getController().enableContinuousInput(0, 360);
-      getController().setTolerance(1);
+      getController().enableContinuousInput(-180,180);
+      getController().setTolerance(5);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (getController().atSetpoint()){
+      DriverStation.reportError("At Setpoint", false);
+    }
     return getController().atSetpoint();
   }
 }

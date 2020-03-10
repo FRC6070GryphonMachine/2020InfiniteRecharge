@@ -69,13 +69,6 @@ public class Chassis extends SubsystemBase {
     right.set(ControlMode.PercentOutput, 0);
   }
 
-  public int getleftVelocity(){
-    return this.left.getActiveTrajectoryVelocity();
-  }
-  public int getrightVelocity(){
-    return this.right.getActiveTrajectoryVelocity();
-  }
-
   public void resetGyro(){
     gyro.reset();
   }
