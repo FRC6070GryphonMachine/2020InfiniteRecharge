@@ -17,6 +17,7 @@ public class IntakeBall extends CommandBase {
   public IntakeBall() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intake);
+    addRequirements(RobotContainer.conveyor);
   }
 
   // Called when the command is initially scheduled.
@@ -29,10 +30,12 @@ public class IntakeBall extends CommandBase {
   public void execute() {
     if(RobotContainer.getIntakeButton()){
       RobotContainer.intake.pull();
+      RobotContainer.conveyor.pull();
     } else if (RobotContainer.getEjectButton()){
       RobotContainer.intake.eject();
     } else {
       RobotContainer.intake.stop();
+      RobotContainer.conveyor.stop();
     }
   }
 

@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.DropIntake;
 import frc.robot.commands.IntakeBall;
-import frc.robot.commands.PullBall;
 import frc.robot.commands.ShootBall;
 import frc.robot.commands.StartDriving;
 import frc.robot.subsystems.Chassis;
@@ -70,7 +69,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     //commands
-    conveyor.setDefaultCommand(new PullBall());
+    conveyor.setDefaultCommand(new IntakeBall());
     chassis.setDefaultCommand(new StartDriving());
     shooter.setDefaultCommand(new ShootBall());
     intake.setDefaultCommand(new IntakeBall());
