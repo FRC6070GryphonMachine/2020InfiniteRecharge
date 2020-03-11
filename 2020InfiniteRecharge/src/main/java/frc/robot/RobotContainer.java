@@ -44,8 +44,8 @@ public class RobotContainer {
   public static Joystick stick;
   public static JoystickButton intakeButton;
   public static JoystickButton ejectButton;
-  public static JoystickButton conveyorButton;
   public static JoystickButton shooterButton;
+  public static JoystickButton slowShooterButton;
   public static JoystickButton armButton;
 
   public static StartDriving startDriving;
@@ -85,11 +85,11 @@ public class RobotContainer {
   private void configureButtonBindings() {
     xbox = new XboxController(0);
     stick = new Joystick(1);
-    intakeButton = new JoystickButton(stick, 0);
-    ejectButton = new JoystickButton(stick, 1);
-    conveyorButton = new JoystickButton(stick, 2);
-    shooterButton = new JoystickButton(stick, 3);
-    armButton = new JoystickButton(stick, 4);
+    shooterButton = new JoystickButton(stick, 0);
+    slowShooterButton = new JoystickButton(stick, 1);
+    ejectButton = new JoystickButton(stick, 2);
+    intakeButton = new JoystickButton(stick, 4);
+    armButton = new JoystickButton(stick, 5);
   }
 
   public static double getYLeft(){
@@ -125,20 +125,20 @@ public class RobotContainer {
     }
   }
 
-  public static boolean getIntakeButton(){
-    return intakeButton.get();
+  public static boolean getShooterButton(){
+    return shooterButton.get();
+  }
+
+  public static boolean getSlowShooterButton(){
+    return slowShooterButton.get();
   }
 
   public static boolean getEjectButton(){
     return ejectButton.get();
   }
-
-  public static boolean getConveyorButton(){
-    return conveyorButton.get();
-  }
-
-  public static boolean getShooterButton(){
-    return shooterButton.get();
+  
+  public static boolean getIntakeButton(){
+    return intakeButton.get();
   }
 
   public static boolean getArmButton(){

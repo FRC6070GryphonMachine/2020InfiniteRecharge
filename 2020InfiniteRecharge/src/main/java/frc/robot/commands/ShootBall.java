@@ -27,8 +27,11 @@ public class ShootBall extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-    RobotContainer.shooter.shoot(RobotContainer.getStickY());
+    if(RobotContainer.getShooterButton()){
+      RobotContainer.shooter.shoot(0.75);
+    } else if(RobotContainer.getSlowShooterButton()){
+      RobotContainer.shooter.shoot(0.5);
+    }
 
   }
 
