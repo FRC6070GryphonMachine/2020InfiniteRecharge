@@ -49,7 +49,6 @@ public class Chassis extends SubsystemBase {
     rightSlave.follow(right);
     leftSlave.follow(left);
     
-    
   }
 
   @Override
@@ -74,6 +73,18 @@ public class Chassis extends SubsystemBase {
   }
   public double getGyro(){
     return gyro.getAngle()%360;
+  }
+
+  public double getLeftEnc(){
+    return left.getSelectedSensorPosition(0);
+  }
+
+  public double getEncMean(){
+    return right.getSelectedSensorPosition(0);
+  }
+
+  public void resetEnc(){
+
   }
 
 }
