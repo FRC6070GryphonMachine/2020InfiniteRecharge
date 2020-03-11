@@ -7,10 +7,7 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -19,10 +16,10 @@ public class Conveyor extends SubsystemBase {
    * Creates a new Conveyor.
    */
 
-  TalonSRX conveyor;
+  Spark conveyor;
   
   public Conveyor() {
-    conveyor = new TalonSRX(Constants.CONVEYOR_TALON);
+    conveyor = new Spark(Constants.CONVEYOR_TALON);
   }
 
   @Override
@@ -31,12 +28,10 @@ public class Conveyor extends SubsystemBase {
   }
 
   public void pull(){
-    conveyor.setNeutralMode(NeutralMode.Coast);
-    conveyor.set(ControlMode.PercentOutput, 0.5);
+    conveyor.set(0.5);
   }
 
   public void stop(){
-    conveyor.setNeutralMode(NeutralMode.Brake);
-    conveyor.set(ControlMode.PercentOutput, 0);
+    conveyor.stopMotor();
   }
 }

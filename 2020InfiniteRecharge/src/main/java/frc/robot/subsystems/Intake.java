@@ -7,10 +7,7 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -19,9 +16,9 @@ public class Intake extends SubsystemBase {
    * Creates a new Intake.
    */
 
-  TalonSRX intake;
+  Spark intake;
   public Intake() {
-    intake = new TalonSRX(Constants.INTAKE_TALON);
+    intake = new Spark(Constants.INTAKE_TALON);
   }
 
   @Override
@@ -30,17 +27,14 @@ public class Intake extends SubsystemBase {
   }
 
   public void pull(){
-    intake.setNeutralMode(NeutralMode.Coast);
-    intake.set(ControlMode.PercentOutput, 0.5);
+    intake.set(0.5);
   }
 
   public void eject(){
-    intake.setNeutralMode(NeutralMode.Coast);
-    intake.set(ControlMode.PercentOutput, -0.5);
+    intake.set(-0.5);
   }
 
   public void stop(){
-    intake.setNeutralMode(NeutralMode.Brake);
-    intake.set(ControlMode.PercentOutput, 0);
+    intake.stopMotor();
   }
 }
