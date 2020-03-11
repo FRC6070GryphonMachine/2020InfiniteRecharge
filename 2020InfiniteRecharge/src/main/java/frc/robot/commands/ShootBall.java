@@ -28,7 +28,7 @@ public class ShootBall extends CommandBase {
   @Override
   public void execute() {
     if(RobotContainer.getShooterButton()){
-      RobotContainer.shooter.shoot(0.75);
+      RobotContainer.shooter.shoot(1);
     } else if(RobotContainer.getSlowShooterButton()){
       RobotContainer.shooter.shoot(0.5);
     }
