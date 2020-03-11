@@ -25,7 +25,6 @@ public class IntakeArm extends SubsystemBase {
   public IntakeArm() {
     intakeArm = new CANSparkMax(Constants.INTAKE_SPARK, MotorType.kBrushed);
     stopSwitch = new DigitalInput(1);
-    counter = new Counter(stopSwitch);
   }
 
   @Override
@@ -46,10 +45,6 @@ public class IntakeArm extends SubsystemBase {
   }
 
   public boolean isSwitchSet(){
-    return (counter.get() > 0);
-  }
-
-  public void startCounter(){
-    counter.reset();
+    return stopSwitch.get();
   }
 }
