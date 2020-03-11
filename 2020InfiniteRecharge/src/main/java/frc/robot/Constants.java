@@ -31,6 +31,7 @@ public final class Constants {
     public static final int CONVEYOR_TALON = 6;
     public static final int SHOOTER_LEFT = 7;
     public static final int SHOOTER_RIGHT = 8;
+    public static final int SHOOTER_SERVO = 0; //TO CHANGE 
 
 
     public static double lSpeedCoefficient = 0.5;

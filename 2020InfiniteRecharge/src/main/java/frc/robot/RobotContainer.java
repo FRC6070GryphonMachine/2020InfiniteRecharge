@@ -47,6 +47,7 @@ public class RobotContainer {
   public static JoystickButton shooterButton;
   public static JoystickButton slowShooterButton;
   public static JoystickButton armButton;
+  public static JoystickButton safetyDisengageButton;
 
   public static StartDriving startDriving;
 
@@ -90,6 +91,7 @@ public class RobotContainer {
     ejectButton = new JoystickButton(stick, 2);
     intakeButton = new JoystickButton(stick, 4);
     armButton = new JoystickButton(stick, 5);
+    safetyDisengageButton = new JoystickButton(stick, 6); //to change as specified by Ethan
   }
 
   public static double getYLeft(){
