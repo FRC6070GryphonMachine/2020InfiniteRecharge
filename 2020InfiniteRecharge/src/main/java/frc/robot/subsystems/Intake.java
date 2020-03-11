@@ -19,6 +19,8 @@ public class Intake extends SubsystemBase {
   Spark intake;
   public Intake() {
     intake = new Spark(Constants.INTAKE_TALON);
+    //Done to make sure intake and conveyor spin in different directions
+    intake.setInverted(true);
   }
 
   @Override
