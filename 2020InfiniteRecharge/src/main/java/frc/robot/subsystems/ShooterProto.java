@@ -22,8 +22,8 @@ public class ShooterProto extends SubsystemBase {
   CANSparkMax leftRoller;
   CANSparkMax rightRoller;
   Servo safetyServo;
-  double hThreshold = 0.75; //change as needed
-  double lThreshold = 0.5;
+  double hThreshold = 1; //change as needed, not used yet because idk
+  double lThreshold = 0.5; //same as above
   double servoOn = 1;
   double servoOff = 0;
   
@@ -59,7 +59,7 @@ public class ShooterProto extends SubsystemBase {
   //voltage may be negative, idk lets find out when we test
   boolean lAtSpeed(){
     if (RobotContainer.getShooterButton()){
-      return leftRoller.getAppliedOutput()>=0.70;
+      return leftRoller.getAppliedOutput()>=0.95;
     }
     else if (RobotContainer.getSlowShooterButton()){
       return leftRoller.getAppliedOutput()>=0.45;
@@ -71,7 +71,7 @@ public class ShooterProto extends SubsystemBase {
 
   boolean rAtSpeed(){
     if (RobotContainer.getShooterButton()){
-      return rightRoller.getAppliedOutput()>=0.70;
+      return rightRoller.getAppliedOutput()>=0.95;
     }
     else if (RobotContainer.getSlowShooterButton()){
       return rightRoller.getAppliedOutput()>=0.45;
