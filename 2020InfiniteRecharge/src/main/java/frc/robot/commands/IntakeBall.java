@@ -33,6 +33,7 @@ public class IntakeBall extends CommandBase {
       RobotContainer.conveyor.pull();
     } else if (RobotContainer.getEjectButton()){
       RobotContainer.intake.eject();
+      RobotContainer.conveyor.eject();
     } else {
       RobotContainer.intake.stop();
       RobotContainer.conveyor.stop();
